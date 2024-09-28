@@ -1,4 +1,7 @@
 import random
+import Olhos
+
+
 Numero_Teste = 0
 
 # Classe Gene para representar 'A' (2) e 'a' (1)
@@ -37,27 +40,27 @@ for cnt in range(1, 101):
     Gene_Pai = random.choice(Zigoto_Pai)
     
     # Zigoto do filho
-    Gene_Filho = [Gene_Mae, Gene_Pai]
+    Zigoto_Filho = [Gene_Mae, Gene_Pai]
     
     # Apenas para o print demonstrativo  
-    if Gene_Filho[0] == Dominante and Gene_Filho[1] == Dominante:
+    if Zigoto_Filho[0] == Dominante and Zigoto_Filho[1] == Dominante:
         Quantidade_AA += 1
         
-    elif (Gene_Filho[0] == Dominante and Gene_Filho[1] == Recessivo) or (Gene_Filho[0] == Recessivo and Gene_Filho[1] == Dominante):
+    elif (Zigoto_Filho[0] == Dominante and Zigoto_Filho[1] == Recessivo) or (Zigoto_Filho[0] == Recessivo and Zigoto_Filho[1] == Dominante):
         Quantidade_Aa_ou_aA += 1
         
-    elif Gene_Filho[0] == Recessivo and Gene_Filho[1] == Recessivo:
+    elif Zigoto_Filho[0] == Recessivo and Zigoto_Filho[1] == Recessivo:
         Quantidade_aa += 1
         
     # Soma os valores do primeiro gene com o segundo para saber se é
     # Homozigoto ou Heterozigoto
-    Valor_Zigoto_Filho = Gene_Filho[0].valor + Gene_Filho[1].valor
+    Valor_Zigoto_Filho = Zigoto_Filho[0].valor + Zigoto_Filho[1].valor
     
     print(f"Filho número: {Numero_Teste}")
     print("\n")
         
     # Exibe os genes do filho
-    print(f"Zigoto do Filho: {Gene_Filho[0]}{Gene_Filho[1]}")
+    print(f"Zigoto do Filho: {Zigoto_Filho[0]}{Zigoto_Filho[1]}")
     
     # Como o valor do gene recessivo é 1
     # E o valor do gene dominante é 2
@@ -77,6 +80,8 @@ for cnt in range(1, 101):
         print("Homozigoto")
     elif Hetero_Zigoto == 1:
         print("Heterozigoto")
+        
+    
     
     
     print("\n")
