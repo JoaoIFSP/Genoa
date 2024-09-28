@@ -1,6 +1,4 @@
 import random
-import Olhos
-
 
 Numero_Teste = 0
 
@@ -56,11 +54,6 @@ for cnt in range(1, 101):
     # Homozigoto ou Heterozigoto
     Valor_Zigoto_Filho = Zigoto_Filho[0].valor + Zigoto_Filho[1].valor
     
-    print(f"Filho número: {Numero_Teste}")
-    print("\n")
-        
-    # Exibe os genes do filho
-    print(f"Zigoto do Filho: {Zigoto_Filho[0]}{Zigoto_Filho[1]}")
     
     # Como o valor do gene recessivo é 1
     # E o valor do gene dominante é 2
@@ -72,22 +65,43 @@ for cnt in range(1, 101):
     else:
         Hetero_Zigoto = 0
         
-    print(f"Valor do Zigoto: {Valor_Zigoto_Filho}")
+def Numero_do_filho (Numero_Teste):
+    Numero_Teste += 1
+    return Numero_Teste
+
+def Parametro_Dominante_Recessivo (Zigoto_Filho, Zigoto_Mae):
     
-    # Compara se é Heterozigoto ou Homozigoto
+    Zigoto_Mae = [Dominante, Recessivo]
+    Zigoto_Pai = [Dominante, Recessivo]
     
-    if Hetero_Zigoto == 0:
-        print("Homozigoto")
-    elif Hetero_Zigoto == 1:
-        print("Heterozigoto")
+    Gene_Mae = random.choice(Zigoto_Mae)
+    Gene_Pai = random.choice(Zigoto_Pai)
+    
+    Zigoto_Filho = [Gene_Mae, Gene_Pai]
+    return Zigoto_Filho
+
+def Valor_do_Zigoto_Filho (Valor_Zigoto_Filho):
+    Zigoto_Filho = [Gene_Mae, Gene_Pai]
+    Valor_Zigoto_Filho = Zigoto_Filho[0].valor + Zigoto_Filho[1].valor
+    return Valor_Zigoto_Filho
+
+def Heterozigoto_ou_Homozigto (Hetero_Zigoto):
+    Valor_Zigoto_Filho = Zigoto_Filho[0].valor + Zigoto_Filho[1].valor
+    if Valor_Zigoto_Filho == 3:
+        Hetero_Zigoto = 1
+    else:
+        Hetero_Zigoto = 0
+    return Hetero_Zigoto
+
+def Densidade_de_Zigotos (Quantidade_AA, Quantidade_Aa_ou_aA, Quantidade_aa):
+    if Zigoto_Filho[0] == Dominante and Zigoto_Filho[1] == Dominante:
+        Quantidade_AA += 1
         
-    
-    
-    
-    print("\n")
-    print("\n")
-    
-# Resultados finais
-print(f"Quantidade AA: {Quantidade_AA}")
-print(f"Quantidade Aa ou aA: {Quantidade_Aa_ou_aA}")
-print(f"Quantidade aa: {Quantidade_aa}")
+    elif (Zigoto_Filho[0] == Dominante and Zigoto_Filho[1] == Recessivo) or (Zigoto_Filho[0] == Recessivo and Zigoto_Filho[1] == Dominante):
+        Quantidade_Aa_ou_aA += 1
+        
+    elif Zigoto_Filho[0] == Recessivo and Zigoto_Filho[1] == Recessivo:
+        Quantidade_aa += 1
+        
+    return Quantidade_AA, Quantidade_Aa_ou_aA, Quantidade_aa
+        
