@@ -1,0 +1,29 @@
+Olhos:
+
+      Castanho             (Dominante)
+      Azul                 (Dominante)
+      Cinza                (Recessivo)
+      Verde                (Recessivo)
+
+Cabelo:
+
+      Preto                (Dominante)
+      Castanho             (Dominante)
+      Loiro                (Recessivo)
+      Ruivo                (Recessivo)
+
+Pele: 
+
+      Clara           (Dominante)
+      Negra           (Dominante)
+      Morena          (A partir de Clara e Negra)
+      Amarela         (Recessivo)
+
+Nariz:
+
+      Negroide        (Gene ligado á pele negra)        
+      Arrebitado           
+    Curvo
+      Nariz Aquilino
+      
+
