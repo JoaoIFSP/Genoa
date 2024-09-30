@@ -198,3 +198,7 @@ print(f"aa: {aa}")
 print(f"{Homozigoto} Homozigotos")
 print(f"{Heterozigoto} Heterozigotos")
 print("\n")
+
+
+
+# até agora 23 horas
