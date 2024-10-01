@@ -23,19 +23,19 @@ def Zigoto_filho_Olhos_depump(Zigoto_Olho_Mae, Zigoto_Olho_Pai):
 
 # Função para determinar a cor dos olhos com base na soma binária
 def determinar_olhos(Zigoto_Filho_Olhos):
-    gene1, gene2 = Zigoto_Filho_Olhos
+    Gene1_Olhos, Gene2_Olhos = Zigoto_Filho_Olhos
 # Fim
     
-    if gene1 == gene2:  # Ambos os genes são iguais (homozigoto)
-        return random.choice([get_color_by_gene(gene1), get_color_by_gene(gene2)])
+    if Gene1_Olhos == Gene2_Olhos:  # Ambos os genes são iguais (homozigoto)
+        return random.choice([get_color_by_gene(Gene1_Olhos), get_color_by_gene(Gene2_Olhos)])
     else:
         # Um é dominante e o outro é recessivo ou heterozigoto
-        if (gene1 >= 4 and gene2 >= 4):  # Ambos os genes são dominantes
-            return random.choice([get_color_by_gene(gene1), get_color_by_gene(gene2)])
-        elif (gene1 >= 4 or gene2 >= 4):  # Um dos genes é dominante
-            return get_color_by_gene(max(gene1, gene2))
+        if (Gene1_Olhos >= 4 and Gene2_Olhos >= 4):  # Ambos os genes são dominantes
+            return random.choice([get_color_by_gene(Gene1_Olhos), get_color_by_gene(Gene2_Olhos)])
+        elif (Gene1_Olhos >= 4 or Gene2_Olhos >= 4):  # Um dos genes é dominante
+            return get_color_by_gene(max(Gene1_Olhos, Gene2_Olhos))
         else:  # Ambos os genes são recessivos
-            return random.choice([get_color_by_gene(gene1), get_color_by_gene(gene2)])
+            return random.choice([get_color_by_gene(Gene1_Olhos), get_color_by_gene(Gene2_Olhos)])
         # Fim
 
 def get_color_by_gene(gene):
@@ -45,20 +45,20 @@ def get_color_by_gene(gene):
     return None
 
 # Dicionário para armazenar a contagem dos resultados
-contagem_resultados = {cor: 0 for cor in Olhos.keys()}
+contagem_resultados_Olhos = {Cor_Olhos: 0 for Cor_Olhos in Olhos.keys()}
 # Fim
 
 # Gera 100 resultados
 def gerar_resultados(num_geracoes=10):
     for i in range(num_geracoes):
         Zigoto_filho_Olhos_dep = Zigoto_filho_Olhos_depump(Zigoto_Olho_Mae, Zigoto_Olho_Pai)
-        resultado_final = determinar_olhos(Zigoto_filho_Olhos_dep)
+        resultado_final_Olhos = determinar_olhos(Zigoto_filho_Olhos_dep)
 
-        print(f"Zigoto {i + 1}: {Zigoto_filho_Olhos_dep} -> Resultado: {resultado_final}")
+        print(f"Zigoto {i + 1}: {Zigoto_filho_Olhos_dep} -> Resultado: {resultado_final_Olhos}")
         
         # Atualiza a contagem para o resultado
-        if resultado_final in contagem_resultados:
-            contagem_resultados[resultado_final] += 1
+        if resultado_final_Olhos in contagem_resultados_Olhos:
+            contagem_resultados_Olhos[resultado_final_Olhos] += 1
         # Fim
 # Fim
 
@@ -68,6 +68,6 @@ gerar_resultados()
 
 # Exibe o total de cada resultado ao final
 print("\nContagem dos resultados após 10000 iterações:")
-for resultado, contagem in contagem_resultados.items():
-    print(f"{resultado}: {contagem}")
+for resultado_Olhos, contagem_Olhos in contagem_resultados_Olhos.items():
+    print(f"{resultado_Olhos}: {contagem_Olhos}")
 # Fim
