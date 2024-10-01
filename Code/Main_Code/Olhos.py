@@ -10,7 +10,7 @@ Olhos = {
 
 # Zigotos dos pais (pode ser alterado conforme necessário)
 Zigoto_Olho_Mae = [Olhos["Castanho"], Olhos["Verde"]]  # Exemplo: mãe com olhos castanhos e azuis
-Zigoto_Olho_Pai = [Olhos["Azul"], Olhos["Amarelo"]]   # Exemplo: pai com olhos amarelos e verdes
+Zigoto_Olho_Pai = [Olhos["Verde"], Olhos["Amarelo"]]   # Exemplo: pai com olhos amarelos e verdes
 # Fim
 
 # Função para gerar o zigoto do filho
@@ -49,7 +49,7 @@ contagem_resultados = {cor: 0 for cor in Olhos.keys()}
 # Fim
 
 # Gera 100 resultados
-def gerar_resultados(num_geracoes=3):
+def gerar_resultados(num_geracoes=10):
     for i in range(num_geracoes):
         Zigoto_filho_Olhos_dep = Zigoto_filho_Olhos_depump(Zigoto_Olho_Mae, Zigoto_Olho_Pai)
         resultado_final = determinar_olhos(Zigoto_filho_Olhos_dep)
