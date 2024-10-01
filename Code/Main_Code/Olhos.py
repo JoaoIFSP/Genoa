@@ -1,80 +1,64 @@
 import random
 
-X = 0
-Y = 0
+# Atribuição de valores binários
+Olhos = {
+    "Castanho": 8,  # Dominante
+    "Amarelo": 4,   # Dominante
+    "Verde": 2,     # Recessivo
+    "Azul": 1       # Recessivo
+}
 
-Dominante_Numb = 2
-Recessivo_Numb = 1
+# Zigotos dos pais (pode ser alterado conforme necessário)
+Zigoto_Olho_Mae = [Olhos["Amarelo"], Olhos["Verde"]]  # Exemplo: mãe com olhos castanhos e azuis
+Zigoto_Olho_Pai = [Olhos["Castanho"], Olhos[ "Amarelo"]]   # Exemplo: pai com olhos amarelos e verdes
 
-Olhos_castanhos = Dominante_Numb
-Olhos_amarelos = Dominante_Numb
-Olhos_verdes = Recessivo_Numb
-Olhos_azuis = Recessivo_Numb
-
-Zigoto_Olho_Mae = [Olhos_castanhos, Olhos_azuis]
-Zigoto_Olho_Pai = [Olhos_amarelos, Olhos_verdes]
-
-# Fórmula de geração do zigoto do filho (Olhos)
+# Função para gerar o zigoto do filho
 def Zigoto_filho_Olhos_depump(Zigoto_Olho_Mae, Zigoto_Olho_Pai):
-    # Escolhe o gene da mãe (Olhos)
     Gene_Mae_Olhos = random.choice(Zigoto_Olho_Mae)
-    # Escolhe o gene do pai (Olhos)
     Gene_Pai_Olhos = random.choice(Zigoto_Olho_Pai)
-    # Zigoto do filho (Olhos)
     Zigoto_Filho_Olhos = [Gene_Mae_Olhos, Gene_Pai_Olhos]
     return Zigoto_Filho_Olhos
 
-def Numb_to_String (Zigoto_Filho_Olhos):
-    Zigoto_Filho_Olhos_Mae_String = "Gene da mãe está errado"
-    if Zigoto_Filho_Olhos[0] == Olhos_castanhos:
-        Zigoto_Filho_Olhos_Mae_String = "Olhos castanhos"
-    elif Zigoto_Filho_Olhos[0] == Olhos_amarelos:
-        Zigoto_Filho_Olhos_Mae_String = "Olhos amarelos"
-    elif Zigoto_Filho_Olhos[0] == Olhos_azuis:
-        Zigoto_Filho_Olhos_Mae_String = "Olhos azuis"
-    elif Zigoto_Filho_Olhos[0] == Olhos_verdes:
-        Zigoto_Filho_Olhos_Mae_String = "Olhos azuis"
+# Função para determinar a cor dos olhos com base na soma binária
+def determinar_olhos(Zigoto_Filho_Olhos):
+    gene1, gene2 = Zigoto_Filho_Olhos
     
-    Zigoto_Filho_Olhos_Pai_String = "Gene da mãe está errado"
-
-    if Zigoto_Filho_Olhos[1] == Olhos_castanhos:
-        Zigoto_Filho_Olhos_Pai_String = "Olhos castanhos"
-    elif Zigoto_Filho_Olhos[1] == Olhos_amarelos:
-        Zigoto_Filho_Olhos_Pai_String = "Olhos amarelos"
-    elif Zigoto_Filho_Olhos[1] == Olhos_azuis:
-        Zigoto_Filho_Olhos_Pai_String = "Olhos azuis"
-    elif Zigoto_Filho_Olhos[1] == Olhos_verdes:
-        Zigoto_Filho_Olhos_Pai_String = "Olhos azuis"
-        
-    Zigoto_Filho_Olhos_String = [Zigoto_Filho_Olhos_Mae_String, Zigoto_Filho_Olhos_Pai_String]
-    return Zigoto_Filho_Olhos_String
-    
-    # eu to com muito sono então vou dormir, voce basicamente fez o mesmo
-    # Code do zigoto, só que um tanto diferente, ta precisando imprimir se o olho do mano é
-    # tipo a b c d tlg
-      
-
-def verificar_zigotagem(Zigoto_Filho_Olhos, Zigoto_Filho_Olhos_String):
-    if Zigoto_Filho_Olhos[0] + Zigoto_Filho_Olhos[1] == 2:
-        Caracteristica_Olho = random.choice(Zigoto_Filho_Olhos_String)
-        return f"Característica do olho: {Caracteristica_Olho}"
-    elif Zigoto_Filho_Olhos[0] + Zigoto_Filho_Olhos[1] == 3:
-        Zigoto_define = "Heterozigoto"
-        return Zigoto_define
-    elif Zigoto_Filho_Olhos[0] + Zigoto_Filho_Olhos[1] == 4:
-        Caracteristica_Olho = random.choice(Zigoto_Filho_Olhos_String)
-        return f"Característica do olho: {Caracteristica_Olho}"
+    if gene1 == gene2:  # Ambos os genes são iguais (homozigoto)
+        return random.choice([get_color_by_gene(gene1), get_color_by_gene(gene2)])
     else:
-        Zigoto_define = "Valor inválido"
-        return Zigoto_define
+        # Um é dominante e o outro é recessivo ou heterozigoto
+        if (gene1 >= 4 and gene2 >= 4):  # Ambos os genes são dominantes
+            return random.choice([get_color_by_gene(gene1), get_color_by_gene(gene2)])
+        elif (gene1 >= 4 or gene2 >= 4):  # Um dos genes é dominante
+            return get_color_by_gene(max(gene1, gene2))
+        else:  # Ambos os genes são recessivos
+            return random.choice([get_color_by_gene(gene1), get_color_by_gene(gene2)])
 
-# Loop para gerar 100 zigotos
-for _ in range(100):
-    # Gera o zigoto do filho (Olhos)
-    Zigoto_Filho_Olhos = Zigoto_filho_Olhos_depump(Zigoto_Olho_Mae, Zigoto_Olho_Pai)
+def get_color_by_gene(gene):
+    for color, value in Olhos.items():
+        if value == gene:
+            return color
+    return None
 
-    # Verifica e define o tipo de zigoto
-    definin_Eye = verificar_zigotagem(Zigoto_Filho_Olhos)
+# Dicionário para armazenar a contagem dos resultados
+contagem_resultados = {cor: 0 for cor in Olhos.keys()}
 
-    # Imprime o resultado
-    print(definin_Eye)
+# Gera 100 resultados
+def gerar_resultados(num_geracoes=10000):
+    for i in range(num_geracoes):
+        Zigoto_filho_Olhos_dep = Zigoto_filho_Olhos_depump(Zigoto_Olho_Mae, Zigoto_Olho_Pai)
+        resultado_final = determinar_olhos(Zigoto_filho_Olhos_dep)
+        
+        print(f"Zigoto {i + 1}: {Zigoto_filho_Olhos_dep} -> Resultado: {resultado_final}")
+        
+        # Atualiza a contagem para o resultado
+        if resultado_final in contagem_resultados:
+            contagem_resultados[resultado_final] += 1
+
+# Executa a geração de resultados
+gerar_resultados()
+
+# Exibe o total de cada resultado ao final
+print("\nContagem dos resultados após 100 iterações:")
+for resultado, contagem in contagem_resultados.items():
+    print(f"{resultado}: {contagem}")
