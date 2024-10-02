@@ -1,16 +1,18 @@
-import random
-
+import random 
+from Form import Zigoto_Olho_Mae, Zigoto_Olho_Pai
 # Atribuição de valores binários
 Olhos = {
+    
     "Castanho": 8,  # Dominante
     "Amarelo": 4,   # Dominante
     "Verde": 2,     # Recessivo
     "Azul": 1       # Recessivo
+    
 }
 
 # Zigotos dos pais (pode ser alterado conforme necessário)
-Zigoto_Olho_Mae = [Olhos["Castanho"], Olhos["Verde"]]  # Exemplo: mãe com olhos castanhos e azuis
-Zigoto_Olho_Pai = [Olhos["Verde"], Olhos["Amarelo"]]   # Exemplo: pai com olhos amarelos e verdes
+Zigoto_Olho_Mae
+Zigoto_Olho_Pai
 # Fim
 
 # Função para gerar o zigoto do filho
@@ -48,26 +50,3 @@ def get_color_by_gene(gene):
 contagem_resultados_Olhos = {Cor_Olhos: 0 for Cor_Olhos in Olhos.keys()}
 # Fim
 
-# Gera 100 resultados
-def gerar_resultados(num_geracoes=10):
-    for i in range(num_geracoes):
-        Zigoto_filho_Olhos_dep = Zigoto_filho_Olhos_depump(Zigoto_Olho_Mae, Zigoto_Olho_Pai)
-        resultado_final_Olhos = determinar_olhos(Zigoto_filho_Olhos_dep)
-
-        print(f"Zigoto {i + 1}: {Zigoto_filho_Olhos_dep} -> Resultado: {resultado_final_Olhos}")
-        
-        # Atualiza a contagem para o resultado
-        if resultado_final_Olhos in contagem_resultados_Olhos:
-            contagem_resultados_Olhos[resultado_final_Olhos] += 1
-        # Fim
-# Fim
-
-# Executa a geração de resultados
-gerar_resultados()
-# Fim
-
-# Exibe o total de cada resultado ao final
-print("\nContagem dos resultados após 10000 iterações:")
-for resultado_Olhos, contagem_Olhos in contagem_resultados_Olhos.items():
-    print(f"{resultado_Olhos}: {contagem_Olhos}")
-# Fim

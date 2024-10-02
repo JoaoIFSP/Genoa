@@ -2,90 +2,74 @@ import random
 
 Numero_Teste = 0
 
-# Classe Gene para representar 'A' (2) e 'a' (1)
-class Gene:
-    def __init__(self, letra, valor):
-        self.letra = letra  # 'A' ou 'a'
-        self.valor = valor  # 2 para dominante, 1 para recessivo
-
-    def __str__(self):
-        return self.letra
-
-    # Comparação com base no valor numérico
-    def __eq__(self, outro):
-        return self.valor == (outro.valor if isinstance(outro, Gene) else outro)
-
-# Criando genes dominante e recessivo
-Dominante = Gene('A', 2)
-Recessivo = Gene('a', 1)
-
-# Contagem para ver densidade de zigotos
-Quantidade_AA = 0
-Quantidade_Aa_ou_aA = 0
-Quantidade_aa = 0
-
-# Trincheira de genes
-Zigoto_Mae = [Dominante, Recessivo]
-Zigoto_Pai = [Dominante, Recessivo]
-
-# Repetição de código
-for cnt in range(1, 101):
-    Numero_Teste += 1
-    # Parâmetro do envio do gene da mãe ao filho
-    Gene_Mae = random.choice(Zigoto_Mae)
+AA = 0
+Aa_aA = 0
+aa = 0
     
-    # Parâmetro do envio do gene do pai ao filho
-    Gene_Pai = random.choice(Zigoto_Pai)
+Dominante_String = "A"
+Recessivo_String = "a"
+
+Dominante_Numb = 2
+Recessivo_Numb = 1
+
+Zigoto_Mae_String = [Dominante_String, Recessivo_String]
+Zigoto_Pai_String = [Dominante_String, Recessivo_String]
+
+# Fórmula de geração do zigoto do filho (String)
+def Zigoto_filho_String_depump(Zigoto_Mae_String, Zigoto_Pai_String):
+    # Escolhe o gene da mãe (String)
+    Gene_Mae_String = random.choice(Zigoto_Mae_String)
+    # Fim
     
-    # Zigoto do filho
-    Zigoto_Filho = [Gene_Mae, Gene_Pai]
+    # Escolhe o gene do pai (String)
+    Gene_Pai_String = random.choice(Zigoto_Pai_String)
+    # Fim
     
-    # Apenas para o print demonstrativo  
-    if Zigoto_Filho[0] == Dominante and Zigoto_Filho[1] == Dominante:
-        Quantidade_AA += 1
-        
-    elif (Zigoto_Filho[0] == Dominante and Zigoto_Filho[1] == Recessivo) or (Zigoto_Filho[0] == Recessivo and Zigoto_Filho[1] == Dominante):
-        Quantidade_Aa_ou_aA += 1
-        
-    elif Zigoto_Filho[0] == Recessivo and Zigoto_Filho[1] == Recessivo:
-        Quantidade_aa += 1
-        
-    # Soma os valores do primeiro gene com o segundo para saber se é
-    # Homozigoto ou Heterozigoto
-    Valor_Zigoto_Filho = Zigoto_Filho[0].valor + Zigoto_Filho[1].valor
+    # Imprime o zigoto do filho (String)
+    Zigoto_Filho_String = [Gene_Mae_String, Gene_Pai_String]
+    # Fim
     
-    print(f"Filho número: {Numero_Teste}")
-    print("\n")
-        
-    # Exibe os genes do filho
-    print(f"Zigoto do Filho: {Zigoto_Filho[0]}{Zigoto_Filho[1]}")
+    # Essa merda é muito confusa, mas ta funcionando
+    # Cata o resultado da function
+    return Zigoto_Filho_String
+    # Fim
     
-    # Como o valor do gene recessivo é 1
-    # E o valor do gene dominante é 2
-    # Todo número inteiro duas vezes é par, e oque está entre eles é o 3
-    # Então se os valors divergirem, os genes divergem, logo Heterozigotos
+# Fim
+
+# Função para converter os genes do filho em números
+def Zigoto_filho_Numb_depump(Zigoto_Filho_String):
+    # Convertendo o gene da mãe para número
+    Gene_Mae_Numb = 2 if Zigoto_Filho_String[0] == "A" else 1
+    # Fim
     
-    if Valor_Zigoto_Filho == 3:
-        Hetero_Zigoto = 1
+    # Convertendo o gene do pai para número
+    Gene_Pai_Numb = 2 if Zigoto_Filho_String[1] == "A" else 1
+    # Fim 
+    
+    # Soma dos números dos genes do pai e da mãe
+    Zigoto_Filho_Numb = Gene_Mae_Numb + Gene_Pai_Numb
+    # Fim
+    
+    # Valor da function
+    return Zigoto_Filho_Numb
+    # Fim
+    
+# Fim
+
+def verificar_zigoto(Zigoto_Filho_Numb):
+    if Zigoto_Filho_Numb[0] == Zigoto_Filho_Numb[1]:
+        return "Homozigoto"
     else:
-        Hetero_Zigoto = 0
-        
-    print(f"Valor do Zigoto: {Valor_Zigoto_Filho}")
+        return "Heterozigoto"
     
-    # Compara se é Heterozigoto ou Homozigoto
-    
-    if Hetero_Zigoto == 0:
-        print("Homozigoto")
-    elif Hetero_Zigoto == 1:
-        print("Heterozigoto")
-        
-    
-    
-    
-    print("\n")
-    print("\n")
-    
-# Resultados finais
-print(f"Quantidade AA: {Quantidade_AA}")
-print(f"Quantidade Aa ou aA: {Quantidade_Aa_ou_aA}")
-print(f"Quantidade aa: {Quantidade_aa}")
+
+# Função para contar as combinações de zigotos (AA, Aa/aA, aa)
+def contagem(AA, Aa_aA, aa, Zigoto_Filho):
+    if Zigoto_Filho[0] == "A" and Zigoto_Filho[1] == "A":
+        AA += 1
+    elif (Zigoto_Filho[0] == "A" and Zigoto_Filho[1] == "a") or (Zigoto_Filho[0] == "a" and Zigoto_Filho[1] == "A"):
+        Aa_aA += 1
+    elif Zigoto_Filho[0] == "a" and Zigoto_Filho[1] == "a":
+        aa += 1
+    return AA, Aa_aA, aa
+# Fim
