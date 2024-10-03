@@ -1,7 +1,7 @@
 Olhos = {
     
     "Castanho": 8,  # Dominante
-    "Amarelo": 4,   # Dominante
+    "Preto": 4,   # Dominante
     "Verde": 2,     # Recessivo
     "Azul": 1       # Recessivo
     
