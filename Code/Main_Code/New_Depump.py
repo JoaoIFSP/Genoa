@@ -7,7 +7,7 @@ from Altura import Zigoto_filho_Altura_depump, determinar_Altura, Zigoto_Altura_
 
 import random
 
-def gerar_resultados(num_geracoes=10000):
+def gerar_resultados(num_geracoes=10):
     for i in range(num_geracoes):
         print(f"Filho número {i + 1}:")
         print("\n")

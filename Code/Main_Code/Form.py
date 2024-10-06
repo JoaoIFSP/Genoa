@@ -56,7 +56,7 @@ Altura = {
 
 # Olhos
 Zigoto_Olho_Mae = [Olhos["Castanho"], Olhos["Azul"]] # Opções:
-Zigoto_Olho_Pai = [Olhos["Amarelo"], Olhos["Verde"]] # Castanho(A) / Amarelo(A) / Azul(a) / Verde(a)
+Zigoto_Olho_Pai = [Olhos["Preto"], Olhos["Verde"]] # Castanho(A) / Amarelo(A) / Azul(a) / Verde(a)
 
 # Fim
 
