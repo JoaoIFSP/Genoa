@@ -57,6 +57,18 @@ def gerar_resultados(num_geracoes=10):
         # Geração do gênero
         genero = random.choice(["X", "Y"])
         
+        if genero == "X":
+           Genero_Zigoto = "Feminino"
+        else:
+           Genero_Zigoto = "Masculino"
+        
+        if genero == "X":
+            Genero_Zigoto_geral = "Mulher"
+        else:
+            Genero_Zigoto_geral = "Homem"
+        
+
+        
         print("Valores de gene:")
         
         print("\n")
@@ -72,16 +84,15 @@ def gerar_resultados(num_geracoes=10):
         print("\n")
         print("Características visuais:")
 
-        print(f"(Olho: {resultado_final_Olhos})")
-        print(f"(Cabelo: {resultado_final_Cabelo})")
-        print(f"(Tipo de Cabelo: {resultado_final_Tipo_Cabelo})")
-        print(f"(Pele: {resultado_final_Pele})")
-        print(f"(Nariz: {resultado_final_Nariz})")
-        print(f"(Altura: {resultado_final_Altura})")
-        if genero == "X":
-            print("(Gênero: Feminino)")
-        else:
-            print("(Gênero: Masculino)")
+        print(f"(Olho: {Genero_Zigoto}: {resultado_final_Olhos})")
+        print(f"(Cabelo: {Genero_Zigoto}: {resultado_final_Cabelo})")
+        print(f"(Tipo de Cabelo: {Genero_Zigoto}: {resultado_final_Tipo_Cabelo})")
+        print(f"(Pele: {Genero_Zigoto}: {resultado_final_Pele})")
+        print(f"(Nariz: {Genero_Zigoto}: {resultado_final_Nariz})")
+        print(f"(Altura: {Genero_Zigoto}: {resultado_final_Altura})")
+        
+        print("\n")
+        print(Genero_Zigoto_geral)
 
         print("\n")
         
