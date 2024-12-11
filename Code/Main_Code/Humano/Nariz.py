@@ -6,7 +6,7 @@ Nariz = {
     "Largo": 8,  # Dominante
     "Fino": 4,   # Dominante
     "Redondo": 2,     # Recessivo
-    "Reto": 1       # Recessivo
+    "Adunco": 1       # Recessivo
     
 }
 
