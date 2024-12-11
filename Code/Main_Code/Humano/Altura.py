@@ -6,7 +6,7 @@ Altura = {
     "1,70 m": 8,  # Dominante
     "1,60 m": 4,   # Dominante
     "1,90 m": 2,     # Recessivo
-    "1,50 m": 1       # Recessivo
+    "1,40 m": 1       # Recessivo
     
 }
 
