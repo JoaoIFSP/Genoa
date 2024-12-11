@@ -3,10 +3,10 @@ from Form import Zigoto_Tipo_Cabelo_Mae, Zigoto_Tipo_Cabelo_Pai
 # Atribuição de valores binários
 Tipo_Cabelo = {
     
-    "Cacheado": 8,  # Dominante
+    "Crespo": 8,  # Dominante
     "Liso": 4,   # Dominante
-    "Grosso": 2,     # Recessivo
-    "Fino": 1       # Recessivo
+    "Cacheado": 2,     # Recessivo
+    "Ondulado": 1       # Recessivo
     
 }
 
